@@ -18,8 +18,8 @@ namespace testGitHub.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet(Name = "GetWeather-Forecast")]
+        public IEnumerable<WeatherForecast> Gets()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

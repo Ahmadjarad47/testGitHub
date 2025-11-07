@@ -1,24 +1,33 @@
-# .github/workflows/deploy.yml
-name: Deploy to VPS
+name: Auto Deploy to VPS
 
+# يتم تشغيله عند كل push على فرع master
 on:
   push:
     branches:
-      - master  # الفرع الذي تريد نشره تلقائيًا
+      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
+      # خطوة استدعاء الكود من GitHub
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # خطوة الاتصال بـ VPS وتشغيل سكريبت النشر
       - name: SSH Deploy to VPS
         uses: appleboy/ssh-action@v1.1.0
         with:
-          host: 72.60.214.250
-          username: root
-          key: ${{ secrets.VPS_PRIVATE_KEY }}
+          host: 72.60.214.250         # ضع هنا IP السيرفر الخاص بك
+          username: root              # المستخدم على VPS
+          key: ${{ secrets.VPS_PRIVATE_KEY }}  # المفتاح الخاص المخزن في GitHub Secrets
           script: |
+            echo "===== Starting Deploy on VPS ====="
             cd /var/www/branch-api
+            if [ ! -f deploy.sh ]; then
+              echo "deploy.sh not found!"
+              exit 1
+            fi
             bash deploy.sh
+            echo "===== Deploy Finished ====="

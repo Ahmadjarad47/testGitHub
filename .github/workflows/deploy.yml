@@ -1,9 +1,10 @@
+# .github/workflows/deploy.yml
 name: Deploy to VPS
 
 on:
   push:
     branches:
-      - master  # لأن فرعك على VPS هو master
+      - master  # الفرع الذي تريد نشره تلقائيًا
 
 jobs:
   deploy:
@@ -12,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to VPS
+      - name: SSH Deploy to VPS
         uses: appleboy/ssh-action@v1.1.0
         with:
           host: 72.60.214.250
@@ -20,11 +21,4 @@ jobs:
           key: ${{ secrets.VPS_PRIVATE_KEY }}
           script: |
             cd /var/www/branch-api
-            if [ ! -d .git ]; then
-              git clone -b master git@github.com:Ahmadjarad47/testGitHub.git .
-            else
-              git fetch origin master
-              git reset --hard origin/master
-            fi
-            dotnet publish -c Release -o /var/www/branch-api/out
-            systemctl restart branch-api
+            bash deploy.sh

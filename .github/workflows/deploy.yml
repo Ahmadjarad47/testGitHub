@@ -1,0 +1,29 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main  # غيّرها إذا كان فرعك اسمه غير main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: 72.60.214.250
+          username: root
+          key: ${{ secrets.VPS_PRIVATE_KEY }}
+          script: |
+            cd /var/www/branch-api
+            if [ ! -d .git ]; then
+              git clone git@github.com:Ahmadjarad47/testGitHub.git .
+            else
+              git pull origin main
+            fi
+            dotnet publish -c Release -o /var/www/branch-api/out
+            systemctl restart branch-api

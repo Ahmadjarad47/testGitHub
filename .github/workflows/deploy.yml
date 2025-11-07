@@ -3,7 +3,7 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - main  # غيّرها إذا كان فرعك اسمه غير main
+      - master  # لأن فرعك على VPS هو master
 
 jobs:
   deploy:
@@ -21,9 +21,10 @@ jobs:
           script: |
             cd /var/www/branch-api
             if [ ! -d .git ]; then
-              git clone git@github.com:Ahmadjarad47/testGitHub.git .
+              git clone -b master git@github.com:Ahmadjarad47/testGitHub.git .
             else
-              git pull origin main
+              git fetch origin master
+              git reset --hard origin/master
             fi
             dotnet publish -c Release -o /var/www/branch-api/out
             systemctl restart branch-api

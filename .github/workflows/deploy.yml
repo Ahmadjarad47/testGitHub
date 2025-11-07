@@ -21,7 +21,7 @@ jobs:
           script: |
             cd /var/www/branch-api
             if [ ! -d .git ]; then
-              git clone git@github.com:YOUR_USERNAME/YOUR_REPO.git .
+              git clone git@github.com:Ahmadjarad47/testGitHub.git .
             else
               git pull origin main
             fi

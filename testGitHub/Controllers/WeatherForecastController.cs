@@ -8,7 +8,7 @@ namespace testGitHub.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hotss", "Sweltering", "Scorching"
+            "asdasd",  "Warm", "Bas-------------------swlmy", "Hotss", "Sweltering", "asdasd"
         };
 
         private readonly ILogger<WeatherForecastController> _logger;

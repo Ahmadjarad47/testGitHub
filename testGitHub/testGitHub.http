@@ -1,4 +1,4 @@
-@testGitHub_HostAddress = http://localhost:5087
+@testGitHub_HostAddress = https://aj47.online
 
 GET {{testGitHub_HostAddress}}/weatherforecast/
 Accept: application/json

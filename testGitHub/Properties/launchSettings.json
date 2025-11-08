@@ -2,23 +2,23 @@
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "profiles": {
     "http": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5087",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "commandName": "Project",
+        "dotnetRunMessages": true,
+        "launchBrowser": true,
+        "launchUrl": "swagger",
+        "applicationUrl": "https://aj47.online",
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+        }
     },
     "https": {
         "commandName": "Project",
         "dotnetRunMessages": true,
         "launchBrowser": true,
         "launchUrl": "swagger",
-        "applicationUrl": "https://aj47.online;http://localhost:5087",
+        "applicationUrl": "https://aj47.online;https://aj47.online",
         "environmentVariables": {
-            "ASPNETCORE_ENVIRONMENT": "Development"
+            "ASPNETCORE_ENVIRONMENT": "Production"
         }
     }
   }

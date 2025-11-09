@@ -21,7 +21,7 @@ namespace TestGitHub.Controllers
         }
 
         // ===== GET v1.0 =====
-        [HttpGet("osama")]
+        [HttpGet("sadsawdasdaw")]
         [MapToApiVersion("1.0")]
         public IEnumerable<WeatherForecast> GetV1()
         {
